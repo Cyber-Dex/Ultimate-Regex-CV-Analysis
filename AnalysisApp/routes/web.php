@@ -18,3 +18,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/', 'App\Http\Controllers\CVController@index');
 
+Route::get('/recruitis', 'App\Http\Controllers\RecruitisController@index');
+Route::put('/recruitis/login', 'App\Http\Controllers\RecruitisController@logIn');
+

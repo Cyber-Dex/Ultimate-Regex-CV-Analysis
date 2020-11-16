@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Custom\Uchazec;
-use App\Models\CV;
+use App\Models\Recruitis;
 use Illuminate\Http\Request;
 
-class CVController extends Controller
+class RecruitisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,15 @@ class CVController extends Controller
      */
     public function index()
     {
-        return view('cv.index', [
-            'uchazec' => new Uchazec()
+        return view('recruitis.index');
+    }
+
+    public function logIn(Request $request)
+    {
+        $recruitis = new \App\Custom\Recruitis\Recruitis($request['username'], $request['password'], $request['device_id'], $request['device_name']);
+        $recruitis->logIn();
+        return view('recruitis.dash', [
+            'system' => $recruitis
         ]);
     }
 
@@ -44,10 +50,10 @@ class CVController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CV  $cV
+     * @param  \App\Models\Recruitis  $recruitis
      * @return \Illuminate\Http\Response
      */
-    public function show(CV $cV)
+    public function show(Recruitis $recruitis)
     {
         //
     }
@@ -55,10 +61,10 @@ class CVController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\CV  $cV
+     * @param  \App\Models\Recruitis  $recruitis
      * @return \Illuminate\Http\Response
      */
-    public function edit(CV $cV)
+    public function edit(Recruitis $recruitis)
     {
         //
     }
@@ -67,10 +73,10 @@ class CVController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CV  $cV
+     * @param  \App\Models\Recruitis  $recruitis
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CV $cV)
+    public function update(Request $request, Recruitis $recruitis)
     {
         //
     }
@@ -78,10 +84,10 @@ class CVController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CV  $cV
+     * @param  \App\Models\Recruitis  $recruitis
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CV $cV)
+    public function destroy(Recruitis $recruitis)
     {
         //
     }

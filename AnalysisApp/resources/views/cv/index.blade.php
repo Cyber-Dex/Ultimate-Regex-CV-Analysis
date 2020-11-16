@@ -10,7 +10,7 @@
                 </ul>
             </header>
             <main>
-
+                {{$uchazec->getResume()->findFirstName()}}
 
             </main>
             <footer>
